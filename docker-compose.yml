@@ -1,0 +1,36 @@
+name: grepp-app
+
+services:
+
+  grepp-web:
+    container_name: grepp-web
+    image: grepp-web
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - net_2
+  
+  grepp-db:
+    image: mysql
+    container_name: grepp-db
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=grepp_app_1
+      - MYSQL_PASSWORD=grepp_app_1!
+      - MYSQL_DATABASE=grepp_exp_db
+    networks:
+      - net_2
+
+  grepp-app:
+    image: grepp-app:0.2
+    container_name: grepp-app
+    networks:
+      - net_2
+    depends_on:
+      - grepp-db
+
+networks:
+  net_2:
+    name: net_2
+    driver: bridge
