@@ -23,23 +23,23 @@ jobs:
       - name: releasing
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.tag_version.outputs.new_version }}
-          name: ${{ steps.tag_version.outputs.new_version }}
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
 
-  build-image:
-    name: 도커 이미지 빌드
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
-      attestations: write
-      id-token: write
-
-    steps:
-
-      - name: Check out Repository
-        uses: actions/checkout@v4
-
-      -
+#  build-image:
+#    name: 도커 이미지 빌드
+#    runs-on: ubuntu-latest
+#
+#    permissions:
+#      contents: read
+#      packages: write
+#      attestations: write
+#      id-token: write
+#
+#    steps:
+#
+#      - name: Check out Repository
+#        uses: actions/checkout@v4
+#
+#      -
