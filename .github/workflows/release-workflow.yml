@@ -49,6 +49,9 @@ jobs:
       - name: Check out Repository
         uses: actions/checkout@v4
 
+      - name: Setting for Development
+        run: echo "${{ secrets.DEV_YML }}" > src/main/resources/application-dev.yml
+
       - name: Sign in github container registry
         uses: docker/login-action@v3
         with:
