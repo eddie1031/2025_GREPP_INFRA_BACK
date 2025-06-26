@@ -23,7 +23,8 @@ services:
       - net_2
 
   grepp-app:
-    image: grepp-app:0.2
+    image: ghcr.io/eddie1031/2025_grepp_infra_back:latest
+#    image: grepp-app:0.2
     container_name: grepp-app
     networks:
       - net_2
